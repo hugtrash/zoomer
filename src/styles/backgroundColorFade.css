@@ -1,0 +1,20 @@
+/* background fade colors */
+.main-wrapper.background-fade-color-white {
+  background-color: white;
+  color: black;
+}
+
+.main-wrapper.background-fade-color-black {
+  background-color: black;
+  color: white;
+}
+
+.main-wrapper.background-fade-color-beige {
+  background-color: #faf9e4;
+  color: black;
+}
+
+.main-wrapper.background-fade-color-red {
+  background-color: #e84729;
+  color: white;
+}

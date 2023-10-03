@@ -1,0 +1,14 @@
+/* custom cursor */
+body,
+a {
+  cursor: none;
+}
+
+body:hover .cursor {
+  opacity: 1.0;
+}
+
+.cursor {
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
