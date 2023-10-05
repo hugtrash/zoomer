@@ -1,0 +1,8 @@
+/* splide custom styles */
+button.splide__arrow {
+  cursor: none;
+}
+
+button.splide__arrow[disabled] {
+  color: rgba(0, 0, 0, .3);
+}

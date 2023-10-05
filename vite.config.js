@@ -16,10 +16,18 @@ export default defineConfig({
     minify: true,
     manifest: true,
     rollupOptions: {
-      input: './src/main.js',
+      input: {
+        global: './src/global.js',
+        home: './src/home.js',
+        studio: './src/studio.js',
+        // work: './src/work.js',
+        // workdetail: './src/work-detail.js',
+        // faces: './src/faces.js',
+        facesdetail: './src/faces-detail.js',
+      },
       output: {
-        format: 'umd',
-        entryFileNames: 'main.js',
+        format: 'es',
+        entryFileNames: '[name].js',
         esModule: false,
         compact: true,
         globals: {

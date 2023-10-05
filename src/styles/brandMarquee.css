@@ -1,0 +1,25 @@
+.brand_collection-list {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 40s linear infinite;
+  /* manipulate the speed of the marquee by changing "40s" line above*/
+}
+
+.brand_collection-list.reverse {
+  animation-direction: reverse;
+}
+
+.brand_collection-list.is-third {
+  animation-duration: 30s;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
