@@ -5,8 +5,6 @@ import './styles/buttonsDrawline.css'
 import customCursor from './features/customCursor'
 import './styles/customCursor.css'
 
-console.log('Welcome to Vite + JS + Webflow!')
-
 customCursor()
 backgroundColorFade()
 buttonsDrawline()
