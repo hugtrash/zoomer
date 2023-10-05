@@ -1,0 +1,34 @@
+{
+  "src/global.js": {
+    "file": "global.js",
+    "src": "src/global.js",
+    "isEntry": true,
+    "css": [
+      "assets/global.8dd6192c.css"
+    ]
+  },
+  "src/home.js": {
+    "file": "home.js",
+    "src": "src/home.js",
+    "isEntry": true,
+    "imports": [
+      "_vendor.e8d1f217.js"
+    ],
+    "css": [
+      "assets/home.7057bcc8.css"
+    ]
+  },
+  "src/studio.js": {
+    "file": "studio.js",
+    "src": "src/studio.js",
+    "isEntry": true
+  },
+  "src/faces-detail.js": {
+    "file": "facesdetail.js",
+    "src": "src/faces-detail.js",
+    "isEntry": true
+  },
+  "_vendor.e8d1f217.js": {
+    "file": "assets/vendor.e8d1f217.js"
+  }
+}

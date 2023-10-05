@@ -1,0 +1,1 @@
+import{S as n}from"./assets/vendor.e8d1f217.js";function r(){document.querySelectorAll(".brand_collection-list").forEach(e=>{const a=e.innerHTML+e.innerHTML;e.innerHTML=a})}r();var i=new n(".splide",{type:"slide",autoWidth:!0,padding:{left:"2.5rem",right:"2.5rem"},pagination:!1,speed:600,easing:"ease",autoplay:!0,interval:4e3,paginationKeyboard:!0,snap:!1});i.mount();

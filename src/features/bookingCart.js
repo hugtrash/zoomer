@@ -1,4 +1,4 @@
-function bookingCart() {
+/*function bookingCart() {
 
   let modelsInCart = JSON.parse(localStorage.getItem('bookingCart'))
 
@@ -58,3 +58,4 @@ function bookingCart() {
 }
 
 export default bookingCart
+*/
