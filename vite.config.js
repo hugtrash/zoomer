@@ -1,9 +1,12 @@
 import { defineConfig } from 'vite'
 import eslintPlugin from 'vite-plugin-eslint'
 
+
 // vite.config.js
 export default defineConfig({
-  plugins: [eslintPlugin({ cache: false })],
+  plugins: [
+    eslintPlugin({ cache: false }),
+  ],
   server: {
     host: 'localhost',
     cors: '*',
@@ -19,11 +22,11 @@ export default defineConfig({
       input: {
         global: './src/global.js',
         home: './src/home.js',
-        studio: './src/studio.js',
+        // studio: './src/studio.js',
         // work: './src/work.js',
         // workdetail: './src/work-detail.js',
         // faces: './src/faces.js',
-        facesdetail: './src/faces-detail.js',
+        // facesdetail: './src/faces-detail.js',
       },
       output: {
         format: 'es',
@@ -33,6 +36,8 @@ export default defineConfig({
         globals: {
           jquery: '$',
         },
+        chunkFileNames: `assets/[name].js`,
+        assetFileNames: `assets/[name].[ext]`,
       },
       external: ['jquery'],
     },
