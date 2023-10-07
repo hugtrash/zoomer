@@ -25,7 +25,7 @@ export default defineConfig({
         // studio: './src/studio.js',
         // work: './src/work.js',
         // workdetail: './src/work-detail.js',
-        // faces: './src/faces.js',
+        faces: './src/faces.js',
         // facesdetail: './src/faces-detail.js',
       },
       output: {
