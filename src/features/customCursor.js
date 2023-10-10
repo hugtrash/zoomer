@@ -5,11 +5,9 @@ function customCursor() {
   container.addEventListener(
     'mouseenter',
     function (event) {
-      console.log('body entered')
       const target = event.target
       if (target.matches('a, button')) {
         cursor.click()
-        console.log('a')
       }
     },
     true
