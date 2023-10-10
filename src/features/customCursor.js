@@ -1,17 +1,30 @@
 function customCursor() {
-  // .cursor class needs to have a mouse click interaction applied
-  const anchorsAndButtons = document.querySelectorAll('a, button')
   const cursor = document.querySelector('.cursor_dot')
+  const container = document.querySelector('body')
 
-  anchorsAndButtons.forEach((element) => {
-    element.addEventListener('mouseenter', function () {
-      cursor.click()
-    })
+  container.addEventListener(
+    'mouseenter',
+    function (event) {
+      console.log('body entered')
+      const target = event.target
+      if (target.matches('a, button')) {
+        cursor.click()
+        console.log('a')
+      }
+    },
+    true
+  )
 
-    element.addEventListener('mouseleave', function () {
-      cursor.click()
-    })
-  })
+  container.addEventListener(
+    'mouseleave',
+    function (event) {
+      const target = event.target
+      if (target.matches('a, button')) {
+        cursor.click()
+      }
+    },
+    true
+  )
 
   // make sure cursor hides on specific elements like special buttons
   function handleMouseEnter() {
