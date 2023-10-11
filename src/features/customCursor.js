@@ -1,12 +1,16 @@
+const cursor = document.querySelector('.cursor_dot')
+
 function customCursor() {
   const cursor = document.querySelector('.cursor_dot')
   const container = document.querySelector('body')
+  const affectedElements = 'a, button, input[type="submit"], .button-drawline'
 
+  // add eventListener and delegate event to target elements
   container.addEventListener(
     'mouseenter',
     function (event) {
       const target = event.target
-      if (target.matches('a, button')) {
+      if (target.matches(affectedElements)) {
         cursor.click()
       }
     },
@@ -17,7 +21,7 @@ function customCursor() {
     'mouseleave',
     function (event) {
       const target = event.target
-      if (target.matches('a, button')) {
+      if (target.matches(affectedElements)) {
         cursor.click()
       }
     },
@@ -34,7 +38,7 @@ function customCursor() {
   }
 
   const hideCursorElements = document.querySelectorAll(
-    '.button-drawline, .is-video'
+    '.button-drawline, .is-video, input[type="submit"]'
   )
 
   hideCursorElements.forEach((element) => {
@@ -43,4 +47,5 @@ function customCursor() {
   })
 }
 
+export { cursor }
 export default customCursor

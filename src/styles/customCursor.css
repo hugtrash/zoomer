@@ -1,7 +1,14 @@
 /* custom cursor */
-body,
-a {
+*,
+input[type="submit"] {
   cursor: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="datetime-local"],
+textarea {
+  cursor: text;
 }
 
 body:hover .cursor {
