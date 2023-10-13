@@ -1,17 +1,18 @@
-import { cursor } from './customCursor'
-
-console.log(cursor)
-
 function bookingCart() {
+  // load faces out of localstorage
   let facesInCart = JSON.parse(localStorage.getItem('bookingCart'))
 
+  // if not present, create empty object
   if (!facesInCart) {
     facesInCart = []
   }
 
-  const cartItemsWrapper = document.querySelector('.cart_items-wrapper')
-  const faces = document.querySelectorAll('[data-face="container"]')
+  const cartItemsWrapper = document.querySelector('.cart_items-wrapper') // get wrapper of cart items
+  const faces = document.querySelectorAll('[data-face="container"]') // get container which holds face data
+  const hiddenInput = document.getElementById('Faces') // get hidden input of request form to load the faces Names in
+  let facesNameString = '' // define faces Names variable
 
+  // Update the cart HTML
   const updateBookingCartHTML = function () {
     localStorage.setItem('bookingCart', JSON.stringify(facesInCart))
     if (facesInCart.length > 0) {
@@ -23,7 +24,7 @@ function bookingCart() {
             <img src="${face.image}" alt="${face.name} zoomer face social media agentur model" class="cart_model-image">
           </div>
           <a href="#" data-id="${face.id}" class="cart_button-delete w-inline-block">
-            <div class="w-embed" style="pointer-events: none"><svg xmlns="http://www.w3.org/2000/svg" style="pointer-events:none" height="100%" viewBox="0 -960 960 960" width="100%"><path fill="currentColor" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"></path></svg></div>
+            <div class="w-embed"><svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 -960 960 960" width="100%"><path fill="currentColor" d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"></path></svg></div>
             <div class="cart_button-delete-label">löschen</div>
           </a>
         </div>
@@ -40,19 +41,18 @@ function bookingCart() {
     }
   }
 
-  const hiddenInput = document.getElementById('Faces')
-  let nameString = ''
-
+  // Update the form hidden input
   function updateFormInput() {
     console.log(facesInCart)
-    nameString = ''
+    facesNameString = ''
 
     for (const item of facesInCart) {
-      nameString += item.name + ', '
+      facesNameString += item.name + ', '
     }
-    hiddenInput.value = nameString
+    hiddenInput.value = facesNameString
   }
 
+  // update the faces in cart (add them)
   function updateFacesInCart(face) {
     // 2
     for (let i = 0; i < facesInCart.length; i++) {
@@ -62,15 +62,19 @@ function bookingCart() {
         return
       }
     }
+    // update local storage
     facesInCart.push(face)
+    // update other elements
     updateFormInput()
     updateCartCount()
+    adjustCartHeight()
   }
 
+  // update the cart count on top right
   function updateCartCount() {
-    const cartCount = facesInCart.length
     const cartCountElement = document.querySelector('.navbar_cart-count')
     const cartIcon = document.querySelector('.is-cart')
+    const cartCount = facesInCart.length
 
     cartCountElement.innerHTML = cartCount
     if (cartCount >= 1) {
@@ -82,6 +86,7 @@ function bookingCart() {
     }
   }
 
+  // create listeners for add face buttons, load data of faces
   faces.forEach((item) => {
     item.addEventListener('click', (e) => {
       if (e.target.matches('[data-face="addFaceButton"]')) {
@@ -101,56 +106,81 @@ function bookingCart() {
     })
   })
 
-  /*function adjustCartHeight() {
+  // adjust cart height based on amount of faces in cart
+  function adjustCartHeight() {
     const cartElement = document.querySelector('.cart')
+    const cartCount = facesInCart.length
+    let height
     if (cartCount === 0) {
-      cartElement.style.height = '12rem'
-    } elseif (cartCount === 1) {
-      cartElement.style.height = '15rem'
-    } elseif (cartCount === 2) {
-      cartElement.style.height = '18rem'
-    } elseif (cartCount === 3) {
-      cartElement.style.height = '21rem'
-    } elseif (cartCount === 4) {
-      cartElement.style.height = '24rem'
-    } elseif (cartCount === 5) {
-      cartElement.style.height = '27rem'
+      height = 13
     } else {
-      cartElement.style.height = '30rem'
+      height = 10 + cartCount * 3.5 // Berechne die Höhe basierend auf cartCount
     }
-    
-  }*/
+    cartElement.style.height = height + 'rem'
+  }
 
+  // delete a face from cart
   function deleteFaceFromCart(faceID) {
-    // Durchsuchen des Arrays facesInCart nach dem zu löschenden Gesicht anhand der ID
+    // search for index of face to delete
     const indexToRemove = facesInCart.findIndex((face) => face.id === faceID)
 
     if (indexToRemove !== -1) {
-      // Wenn das Gesicht gefunden wurde, entfernen Sie es aus dem Array
+      // if face is founded, delete it and update everything
       facesInCart.splice(indexToRemove, 1)
       updateBookingCartHTML()
       updateFormInput()
       updateCartCount()
+      adjustCartHeight()
     }
   }
-
-  // Event-Delegation: Hören Sie auf Klick-Ereignisse im gesamten Cart-Bereich
+  // add listener to all delete buttons
   cartItemsWrapper.addEventListener(
     'click',
     (e) => {
       if (e.target.matches('.cart_button-delete')) {
-        // Überprüfen, ob der geklickte Button die Klasse 'cart_button-delete' hat
         const faceID = e.target.dataset.id
         deleteFaceFromCart(faceID)
-        cursor.click()
       }
     },
     true
   )
 
+  // close cart if it's open, but ignore certain elements to not interfere with webflow interactions
+  document.body.addEventListener('click', (e) => {
+    const cart = document.querySelector('.cart')
+    const cartIcon = document.querySelector('.is-cart')
+    const addFaceButton = document.querySelector('[data-face="addFaceButton"]')
+
+    const isCartDeleteButton = e.target.classList.contains('cart_button-delete')
+    const isAnyCartDeleteButton = Array.from(
+      cart.querySelectorAll('.cart_button-delete')
+    ).includes(e.target)
+
+    // only register the click if not within cart, carticon or add button
+    if (
+      e.type === 'click' &&
+      !cart.contains(e.target) &&
+      e.target !== cart &&
+      e.target !== cartIcon &&
+      !cartIcon.contains(e.target) &&
+      e.target !== addFaceButton &&
+      !isCartDeleteButton &&
+      !isAnyCartDeleteButton
+    ) {
+      // check for display: none to find out if cart is visible
+      const cartStyle = window.getComputedStyle(cart)
+      const cartDisplayStyle = cartStyle.getPropertyValue('display')
+
+      if (cartDisplayStyle != 'none') {
+        cartIcon.click()
+      }
+    }
+  })
+  // update everything on inital load
   updateBookingCartHTML()
   updateFormInput()
   updateCartCount()
+  adjustCartHeight()
 }
 
 export default bookingCart
