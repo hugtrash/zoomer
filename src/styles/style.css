@@ -2,10 +2,17 @@ input[type="datetime-local"]:focus {
   outline: none;
 }
 
-input[type="datetime-local"]::calendar-picker-indicator {
-  color: red;
+/* lightbox styles */
+.w-lightbox-thumbnail,
+.w-lightbox-image {
+  border-radius: .25rem;
 }
 
-input[type="datetime-local"]::selection {
-  color: red;
+.w-lightbox-backdrop {
+  background: rgba(255, 255, 255, .8);
+  backdrop-filter: blur(20px);
+}
+
+.cart_button-delete * {
+  pointer-events: none;
 }
