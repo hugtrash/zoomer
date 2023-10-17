@@ -1,0 +1,8 @@
+body .transition {
+  display: block
+}
+
+.no-scroll-transition {
+  overflow: hidden;
+  position: relative;
+}
