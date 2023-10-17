@@ -43,7 +43,7 @@ function bookingCart() {
 
   // Update the form hidden input
   function updateFormInput() {
-    console.log(facesInCart)
+    // console.log(facesInCart)
     facesNameString = ''
 
     for (const item of facesInCart) {
@@ -58,7 +58,7 @@ function bookingCart() {
     for (let i = 0; i < facesInCart.length; i++) {
       if (facesInCart[i].id == face.id) {
         // ------------> give a message if this face is already in cart
-        console.log('face already in cart!')
+        //console.log('face already in cart!')
         return
       }
     }
@@ -87,24 +87,26 @@ function bookingCart() {
   }
 
   // create listeners for add face buttons, load data of faces
-  faces.forEach((item) => {
-    item.addEventListener('click', (e) => {
-      if (e.target.matches('[data-face="addFaceButton"]')) {
-        const faceID = item.querySelector('[data-face="name"]').innerHTML // use name as ID! Bad practice, but enough for here. Alternatively could use an id on the add button: e.target.dataset.faceId
-        const faceName = item.querySelector('[data-face="name"]').innerHTML
-        const faceImage = item.querySelector('[data-face="cart-image"]').src
-        let face = {
-          name: faceName,
-          image: faceImage,
-          id: faceID,
+  if (faces) {
+    faces.forEach((item) => {
+      item.addEventListener('click', (e) => {
+        if (e.target.matches('[data-face="addFaceButton"]')) {
+          const faceID = item.querySelector('[data-face="name"]').innerHTML // use name as ID! Bad practice, but enough for here. Alternatively could use an id on the add button: e.target.dataset.faceId
+          const faceName = item.querySelector('[data-face="name"]').innerHTML
+          const faceImage = item.querySelector('[data-face="cart-image"]').src
+          let face = {
+            name: faceName,
+            image: faceImage,
+            id: faceID,
+          }
+          updateFacesInCart(face)
+          updateBookingCartHTML()
+          updateFormInput()
+          updateCartCount()
         }
-        updateFacesInCart(face)
-        updateBookingCartHTML()
-        updateFormInput()
-        updateCartCount()
-      }
+      })
     })
-  })
+  }
 
   // adjust cart height based on amount of faces in cart
   function adjustCartHeight() {
@@ -134,16 +136,18 @@ function bookingCart() {
     }
   }
   // add listener to all delete buttons
-  cartItemsWrapper.addEventListener(
-    'click',
-    (e) => {
-      if (e.target.matches('.cart_button-delete')) {
-        const faceID = e.target.dataset.id
-        deleteFaceFromCart(faceID)
-      }
-    },
-    true
-  )
+  if (cartItemsWrapper) {
+    cartItemsWrapper.addEventListener(
+      'click',
+      (e) => {
+        if (e.target.matches('.cart_button-delete')) {
+          const faceID = e.target.dataset.id
+          deleteFaceFromCart(faceID)
+        }
+      },
+      true
+    )
+  }
 
   // close cart if it's open, but ignore certain elements to not interfere with webflow interactions
   document.body.addEventListener('click', (e) => {
