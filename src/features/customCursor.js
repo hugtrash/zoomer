@@ -1,11 +1,47 @@
-const cursor = document.querySelector('.cursor_dot')
+const cursor = document.querySelector('.cursor')
 
 function customCursor() {
+  //   // define affected elements
+  //   const affectedElements = document.querySelectorAll(
+  //     'a, button, input[type="submit"], .button-drawline'
+  //   )
+
+  //   function addCursorLinkClass() {
+  //     affectedElements.forEach((element) => {
+  //       element.classList.add('cursorlink')
+  //     })
+  //   }
+
+  //   addCursorLinkClass()
+
+  // // make sure class is also added when new elements are created in the dom
+
+  // const observerConfig = { childList: true, subtree: true }
+
+  // function handleMutation(mutationsList) {
+  //   for (const mutation of mutationsList) {
+  //     if (mutation.type === 'childList') {
+  //       const addedNodes = Array.from(mutation.addedNodes)
+  //       addedNodes.forEach((node) => {
+  //         if (node.matches(affectedElements)) {
+  //           addCursorLinkClass(node)
+  //         }
+  //       })
+  //     }
+  //   }
+  // }
+
+  // const observer = new MutationObserver(handleMutation)
+  // observer.observe(document.body, observerConfig)
+
+  /*
   const cursor = document.querySelector('.cursor_dot')
   const container = document.querySelector('body')
   const affectedElements = 'a, button, input[type="submit"], .button-drawline'
-
-  // add eventListener and delegate event to target elements
+  
+  
+  
+  /* add eventListener and delegate event to target elements
   container.addEventListener(
     'mouseenter',
     function (event) {
@@ -16,7 +52,7 @@ function customCursor() {
     },
     true
   )
-
+  
   container.addEventListener(
     'mouseleave',
     function (event) {
@@ -27,7 +63,7 @@ function customCursor() {
     },
     true
   )
-
+  */
   // make sure cursor hides on specific elements like special buttons
   function handleMouseEnter() {
     cursor.style.opacity = 0

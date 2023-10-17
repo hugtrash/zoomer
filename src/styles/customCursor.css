@@ -1,6 +1,7 @@
 /* custom cursor */
 *,
-input[type="submit"] {
+input[type="submit"],
+.w-lightbox-control {
   cursor: none;
 }
 
