@@ -1,7 +1,8 @@
 /* custom cursor */
 *,
 input[type="submit"],
-.w-lightbox-control {
+.w-lightbox-control,
+.w-button {
   cursor: none;
 }
 

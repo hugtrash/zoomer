@@ -24,21 +24,22 @@ function textReveal() {
         timeline.pause()
       },
     })
-    // Play tl when scrolled into view (60% from top of screen)
+    // Play tl when scrolled into view (90% from top of screen)
     ScrollTrigger.create({
       trigger: triggerElement,
-      start: 'top 60%',
+      start: 'top 100%',
       onEnter: () => timeline.play(),
     })
   }
 
-  $('[letters-slide-up]').each(function () {
+  $('[letters-slide-up]').each(function (index) {
     let tl = gsap.timeline({ paused: true })
     tl.from($(this).find('.char'), {
-      yPercent: 100,
+      yPercent: 110,
       duration: 0.2,
       ease: 'power1.out',
       stagger: { amount: 0.6 },
+      delay: index * 0.75,
     })
     createScrollTrigger($(this), tl)
   })
