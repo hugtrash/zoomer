@@ -1,7 +1,7 @@
-import jQuery from 'jquery'
+import $ from 'jquery'
 
 function backgroundColorFade() {
-  jQuery(document).ready(function ($) {
+  $(document).ready(function ($) {
     $(window)
       .scroll(function () {
         // Selectors

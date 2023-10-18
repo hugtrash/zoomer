@@ -1,7 +1,7 @@
-import jQuery from 'jquery'
+import $ from 'jquery'
 
 function pageTransition() {
-  jQuery(document).ready(function ($) {
+  $(document).ready(function ($) {
     let transitionTrigger = $('.transition_trigger')
     let introDurationMS = 1000
     let exitDurationMS = 1150
