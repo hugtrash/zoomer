@@ -4,8 +4,6 @@ import SplitType from 'split-type'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const $ = window.jQuery
-
 function textReveal() {
   // Split text into spans
   new SplitType('[text-split]', {
