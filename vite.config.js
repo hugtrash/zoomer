@@ -16,8 +16,8 @@ export default defineConfig({
     },
   },
   build: {
-    minify: false,
-    minifyIdentifiers: false,
+    minify: true,
+    minifyIdentifiers: true,
     manifest: true,
     rollupOptions: {
       input: {
