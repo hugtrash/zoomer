@@ -4,10 +4,20 @@ import SplitType from 'split-type'
 
 gsap.registerPlugin(ScrollTrigger)
 
+function isElementInViewport(element) {
+  const rect = element.getBoundingClientRect()
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  )
+}
+
 function textReveal() {
   // Split text into spans
   new SplitType('[text-split]', {
-    types: 'words, chars',
+    types: 'words, lines, chars',
     tagName: 'span',
   })
 
@@ -22,111 +32,108 @@ function textReveal() {
         timeline.pause()
       },
     })
-    // Play tl when scrolled into view (90% from top of screen)
+    // Play tl when scrolled into view (60% from top of screen)
     ScrollTrigger.create({
       trigger: triggerElement,
-      start: 'top 100%',
+      start: 'top 60%',
       onEnter: () => timeline.play(),
     })
   }
 
-  $('[letters-slide-up]').each(function (index) {
-    let tl = gsap.timeline({ paused: true })
-    tl.from($(this).find('.char'), {
-      yPercent: 110,
-      duration: 0.2,
-      ease: 'power1.out',
-      stagger: { amount: 0.6 },
-      delay: index * 0.75,
-    })
-    createScrollTrigger($(this), tl)
+  $('[title-reveal]').each(function () {
+    const element = $(this)
+    let animationDelay = 1 // delay if already in viewport
+
+    const inViewport = isElementInViewport(this)
+
+    const createAnimationWithDelay = (delay) => {
+      const tl = gsap.timeline({ paused: true })
+      tl.from($(this).find('.char'), {
+        yPercent: 110,
+        duration: 0.2,
+        ease: 'power1.out',
+        stagger: { amount: 0.6 },
+        delay: delay,
+      })
+      createScrollTrigger(element, tl)
+    }
+
+    if (inViewport) {
+      // Element ist im Viewport, mit Verzögerung abspielen
+      createAnimationWithDelay(animationDelay)
+    } else {
+      // Element ist nicht im Viewport, ohne Verzögerung abspielen
+      createAnimationWithDelay(0)
+    }
   })
 
-  // $('[words-slide-up]').each(function (index) {
+  // $('[paragraph-reveal]').each(function (index) {
   //   let tl = gsap.timeline({ paused: true })
   //   tl.from($(this).find('.word'), {
-  //     opacity: 0,
-  //     yPercent: 100,
-  //     duration: 0.5,
-  //     ease: 'back.out(2)',
-  //     stagger: { amount: 0.5 },
-  //   })
-  //   createScrollTrigger($(this), tl)
-  // })
-
-  // $('[words-rotate-in]').each(function (index) {
-  //   let tl = gsap.timeline({ paused: true })
-  //   tl.set($(this).find('.word'), { transformPerspective: 1000 })
-  //   tl.from($(this).find('.word'), {
-  //     rotationX: -90,
-  //     duration: 0.6,
-  //     ease: 'power2.out',
+  //     yPercent: 110,
+  //     duration: 0.2,
+  //     ease: 'power1.out',
   //     stagger: { amount: 0.6 },
+  //     delay: index * 0.75,
   //   })
   //   createScrollTrigger($(this), tl)
   // })
 
-  // $('[words-slide-from-right]').each(function (index) {
-  //   let tl = gsap.timeline({ paused: true })
-  //   tl.from($(this).find('.word'), {
-  //     opacity: 0,
-  //     x: '1em',
-  //     duration: 0.6,
-  //     ease: 'power2.out',
-  //     stagger: { amount: 0.2 },
-  //   })
-  //   createScrollTrigger($(this), tl)
-  // })
+  $('[paragraph-reveal]').each(function (index) {
+    const element = $(this)
+    let animationDelay = (index + 2) * 0.75 // delay if already in viewport
 
-  // $('[letters-slide-down]').each(function (index) {
-  //   let tl = gsap.timeline({ paused: true })
-  //   tl.from($(this).find('.char'), {
-  //     yPercent: -120,
-  //     duration: 0.3,
-  //     ease: 'power1.out',
-  //     stagger: { amount: 0.7 },
-  //   })
-  //   createScrollTrigger($(this), tl)
-  // })
+    // Überprüfen, ob das Element im Viewport ist
+    const inViewport = isElementInViewport(this)
 
-  // $('[letters-fade-in]').each(function (index) {
-  //   let tl = gsap.timeline({ paused: true })
-  //   tl.from($(this).find('.char'), {
-  //     opacity: 0,
-  //     duration: 0.2,
-  //     ease: 'power1.out',
-  //     stagger: { amount: 0.8 },
-  //   })
-  //   createScrollTrigger($(this), tl)
-  // })
+    // Erstelle die Animation mit oder ohne Verzögerung basierend auf der Viewport-Prüfung
+    const createAnimationWithDelay = (delay) => {
+      const tl = gsap.timeline({ paused: true })
+      tl.from(element.find('.word'), {
+        yPercent: 110,
+        duration: 0.2,
+        ease: 'power1.out',
+        stagger: { amount: 0.6 },
+        delay: delay,
+      })
+      createScrollTrigger(element, tl)
+    }
 
-  // $('[letters-fade-in-random]').each(function (index) {
-  //   let tl = gsap.timeline({ paused: true })
-  //   tl.from($(this).find('.char'), {
-  //     opacity: 0,
-  //     duration: 0.05,
-  //     ease: 'power1.out',
-  //     stagger: { amount: 0.4, from: 'random' },
-  //   })
-  //   createScrollTrigger($(this), tl)
-  // })
+    if (inViewport) {
+      // Element ist im Viewport, mit Verzögerung abspielen
+      createAnimationWithDelay(animationDelay)
+    } else {
+      // Element ist nicht im Viewport, ohne Verzögerung abspielen
+      createAnimationWithDelay(0)
+    }
+  })
 
-  // $('[scrub-each-word]').each(function (index) {
-  //   let tl = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: $(this),
-  //       start: 'top 90%',
-  //       end: 'top center',
-  //       scrub: true,
-  //     },
-  //   })
-  //   tl.from($(this).find('.word'), {
-  //     opacity: 0.2,
-  //     duration: 0.2,
-  //     ease: 'power1.out',
-  //     stagger: { each: 0.4 },
-  //   })
-  // })
+  $('[label-reveal]').each(function (index) {
+    const element = $(this)
+    let animationDelay = (index + 2) * 0.15 // delay if already in viewport
+
+    // Überprüfen, ob das Element im Viewport ist
+    const inViewport = isElementInViewport(this)
+    const createAnimationWithDelay = (delay) => {
+      const tl = gsap.timeline({ paused: true })
+      tl.from($(this).find('.char'), {
+        yPercent: 110,
+        duration: 0.2,
+        ease: 'power1.out',
+        stagger: { amount: 0.1 },
+        delay: delay,
+      })
+      createScrollTrigger(element, tl)
+    }
+
+    if (inViewport) {
+      // Element ist im Viewport, mit Verzögerung abspielen
+      createAnimationWithDelay(animationDelay)
+    } else {
+      // Element ist nicht im Viewport, ohne Verzögerung abspielen
+      createAnimationWithDelay(0)
+    }
+  })
 
   // Avoid flash of unstyled content
   gsap.set('[text-split]', { opacity: 1 })
