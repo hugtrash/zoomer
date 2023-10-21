@@ -7,6 +7,7 @@ import bookingCart from './features/bookingCart'
 import buttonsDrawline from './features/buttonsDrawline'
 import './styles/buttonsDrawline.css'
 import customCursor from './features/customCursor'
+import validateForm from './features/formValidation'
 import pageTransition from './features/pageTransition'
 import './styles/pageTransition.css'
 import textReveal from './features/textReveal'
@@ -21,3 +22,4 @@ buttonsDrawline()
 bookingCart()
 pageTransition()
 textReveal()
+validateForm()

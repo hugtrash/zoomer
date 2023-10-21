@@ -19,10 +19,6 @@
   display: block;
 }
 
-.button-drawline.active .path {
-  animation-duration: 0s;
-}
-
 .path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
@@ -38,4 +34,18 @@
   to {
     stroke-dashoffset: 0;
   }
+}
+
+/* used for active filter (circle visible */
+.button-drawline.active .path {
+  animation-duration: 0s;
+}
+
+/* inactive form button */
+.button-drawline.is-form-inactive .line-container {
+  display: none;
+}
+
+.is-form-inactive {
+  pointer-events: none !important;
 }

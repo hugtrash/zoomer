@@ -31,9 +31,9 @@ function bookingCart() {
         `
       })
       cartItemsWrapper.innerHTML = result.join('')
-      document.querySelector('.cart_startrequest-wrapper').classList.remove('hide')
+      document.querySelector('[data-cart="startrequest-wrapper"]').classList.remove('hide')
     } else {
-      document.querySelector('.cart_startrequest-wrapper').classList.add('hide')
+      document.querySelector('[data-cart="startrequest-wrapper"]').classList.add('hide')
       cartItemsWrapper.innerHTML =
         '<div class="cart_empty-content"><p class="cart_empty-message">keine Faces auf deiner Liste 🥺</p><a href="/faces" class="cart_empty-link">Faces ansehen</a></div>'
     }
