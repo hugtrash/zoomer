@@ -76,8 +76,8 @@ function bookingCart() {
 
   // update the cart count on top right
   function updateCartCount() {
-    const cartCountElement = document.querySelector('.navbar_cart-count')
-    const cartIcon = document.querySelector('.is-cart')
+    const cartCountElement = document.querySelector('[data-cart="cartcount"]')
+    const cartIcon = document.querySelector('[data-cart="carticon"]')
     const cartCount = facesInCart.length
 
     cartCountElement.innerHTML = cartCount
@@ -156,7 +156,7 @@ function bookingCart() {
   // close cart if it's open, but ignore certain elements to not interfere with webflow interactions
   document.body.addEventListener('click', (e) => {
     const cart = document.querySelector('.cart')
-    const cartIcon = document.querySelector('.is-cart')
+    const cartLink = document.querySelector('[data-cart="cartlink"]')
     const addFaceButton = document.querySelector('[data-face="addFaceButton"]')
 
     const isCartDeleteButton = e.target.classList.contains('cart_button-delete')
@@ -167,8 +167,8 @@ function bookingCart() {
       e.type === 'click' &&
       !cart.contains(e.target) &&
       e.target !== cart &&
-      e.target !== cartIcon &&
-      !cartIcon.contains(e.target) &&
+      e.target !== cartLink &&
+      !cartLink.contains(e.target) &&
       e.target !== addFaceButton &&
       !isCartDeleteButton &&
       !isAnyCartDeleteButton
@@ -178,7 +178,7 @@ function bookingCart() {
       const cartDisplayStyle = cartStyle.getPropertyValue('display')
 
       if (cartDisplayStyle != 'none') {
-        cartIcon.click()
+        cartLink.click()
       }
     }
   })
