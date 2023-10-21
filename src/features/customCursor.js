@@ -73,9 +73,7 @@ function customCursor() {
     cursor.style.opacity = 1
   }
 
-  const hideCursorElements = document.querySelectorAll(
-    '.button-drawline, .is-video, input[type="submit"]'
-  )
+  const hideCursorElements = document.querySelectorAll('.button-drawline, .is-video, input[type="submit"]')
 
   hideCursorElements.forEach((element) => {
     element.addEventListener('mouseenter', handleMouseEnter)

@@ -1,8 +1,6 @@
 function facesFilterActive() {
   // Funktion um beim laden checked zu prüfen und nötigenfalls active zu setzen
-  var radioButtons = document.querySelectorAll(
-    'input[data-name="Faces Filter"]'
-  )
+  var radioButtons = document.querySelectorAll('input[data-name="Faces Filter"]')
   for (var i = 0; i < radioButtons.length; i++) {
     if (radioButtons[i].checked) {
       var label = radioButtons[i].closest('label')

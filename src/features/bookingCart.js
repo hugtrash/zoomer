@@ -31,9 +31,7 @@ function bookingCart() {
         `
       })
       cartItemsWrapper.innerHTML = result.join('')
-      document
-        .querySelector('.cart_startrequest-wrapper')
-        .classList.remove('hide')
+      document.querySelector('.cart_startrequest-wrapper').classList.remove('hide')
     } else {
       document.querySelector('.cart_startrequest-wrapper').classList.add('hide')
       cartItemsWrapper.innerHTML =
@@ -110,7 +108,7 @@ function bookingCart() {
 
   // adjust cart height based on amount of faces in cart
   function adjustCartHeight() {
-    const cartElement = document.querySelector('.cart')
+    const cartElement = document.querySelector('.cart_inner-container')
     const cartCount = facesInCart.length
     let height
     if (cartCount === 0) {
@@ -156,9 +154,7 @@ function bookingCart() {
     const addFaceButton = document.querySelector('[data-face="addFaceButton"]')
 
     const isCartDeleteButton = e.target.classList.contains('cart_button-delete')
-    const isAnyCartDeleteButton = Array.from(
-      cart.querySelectorAll('.cart_button-delete')
-    ).includes(e.target)
+    const isAnyCartDeleteButton = Array.from(cart.querySelectorAll('.cart_button-delete')).includes(e.target)
 
     // only register the click if not within cart, carticon or add button
     if (

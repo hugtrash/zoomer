@@ -16,16 +16,13 @@ function backgroundColorFade() {
         var triggerPoint = $window.height() * (1 - colorOffset / 100)
 
         // Calculate the trigger's position relative to the viewport
-        var triggerPosition =
-          $this.offset().top + $this.height() - $window.scrollTop()
+        var triggerPosition = $this.offset().top + $this.height() - $window.scrollTop()
 
         // Check if the trigger is within the trigger point range
         if (triggerPosition >= 0 && triggerPosition <= triggerPoint) {
           // Remove all classes on body with color-
           $body.removeClass(function (index, css) {
-            return (css.match(/(^|\s)background-fade-color-\S+/g) || []).join(
-              ' '
-            )
+            return (css.match(/(^|\s)background-fade-color-\S+/g) || []).join(' ')
           })
 
           // Add class of currently active div
