@@ -10,6 +10,8 @@ function bookingCart() {
   const cartItemsWrapper = document.querySelector('.cart_items-wrapper') // get wrapper of cart items
   const faces = document.querySelectorAll('[data-face="container"]') // get container which holds face data
   const hiddenInput = document.getElementById('Faces') // get hidden input of request form to load the faces Names in
+  const startRequestButton = document.querySelector('[data-cart="startrequest-wrapper"]') // get wrapper of start request button
+
   let facesNameString = '' // define faces Names variable
 
   // Update the cart HTML
@@ -31,9 +33,13 @@ function bookingCart() {
         `
       })
       cartItemsWrapper.innerHTML = result.join('')
-      document.querySelector('[data-cart="startrequest-wrapper"]').classList.remove('hide')
+      if (startRequestButton) {
+        startRequestButton.classList.remove('hide')
+      }
     } else {
-      document.querySelector('[data-cart="startrequest-wrapper"]').classList.add('hide')
+      if (startRequestButton) {
+        startRequestButton.classList.add('hide')
+      }
       cartItemsWrapper.innerHTML =
         '<div class="cart_empty-content"><p class="cart_empty-message">keine Faces auf deiner Liste 🥺</p><a href="/faces" class="cart_empty-link">Faces ansehen</a></div>'
     }
