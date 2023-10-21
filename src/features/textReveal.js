@@ -49,7 +49,7 @@ function textReveal() {
     const createAnimationWithDelay = (delay) => {
       const tl = gsap.timeline({ paused: true })
       tl.from($(this).find('.char'), {
-        yPercent: 110,
+        yPercent: 115,
         duration: 0.2,
         ease: 'power1.out',
         stagger: { amount: 0.6 },
