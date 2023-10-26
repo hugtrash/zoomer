@@ -18,3 +18,17 @@
   background-color: #e84729;
   color: white;
 }
+
+.main-wrapper.background-fade-color-black .form_input {
+  border-color: white;
+  color: white;
+}
+
+.main-wrapper.background-fade-color-black .form_input:focus {
+  border-color: #e84729;
+}
+
+.main-wrapper.background-fade-color-black .button:hover {
+  background: white;
+  color: #e84729;
+}
