@@ -2,6 +2,10 @@ body .transition {
   display: block
 }
 
+body.no-transition .transition {
+  display: none !important;
+}
+
 .no-scroll-transition {
   overflow: hidden;
   position: relative;

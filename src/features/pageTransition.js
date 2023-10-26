@@ -3,14 +3,21 @@ function pageTransition() {
   let introDurationMS = 1000
   let exitDurationMS = 1150
   let excludedClass = 'no-transition'
+  let excludePage = document.body.classList.contains(excludedClass)
+  //let transitionContainer = document.querySelector('.transition')
 
   // On Page Load
-  if (transitionTrigger.length > 0) {
+  if (transitionTrigger.length > 0 && !excludePage) {
+    console.log(excludePage)
+    console.log('is NOT excluded page')
     transitionTrigger.click()
     $('body').addClass('no-scroll-transition')
     setTimeout(() => {
       $('body').removeClass('no-scroll-transition')
     }, introDurationMS)
+  } else if (excludePage) {
+    console.log('is excluded page')
+    //transitionContainer.style.display = 'none'
   }
   // On Link Click
   $('a').on('click', function (e) {
