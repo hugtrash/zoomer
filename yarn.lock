@@ -46,6 +46,11 @@
   dependencies:
     just-debounce "^1.1.0"
 
+"@finsweet/attributes-cmsstatic@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.npmjs.org/@finsweet/attributes-cmsstatic/-/attributes-cmsstatic-1.3.0.tgz"
+  integrity sha512-qK0X+43SVf8cLF5BlyZlcemFlg1LboSOORbfYOjTvqsGQR4KThaM/CkvlAYJH/f2GU6LO//CiDaiH6wi3XsLQA==
+
 "@finsweet/attributes-mirrorclick@^1.5.0":
   version "1.5.0"
   resolved "https://registry.npmjs.org/@finsweet/attributes-mirrorclick/-/attributes-mirrorclick-1.5.0.tgz"
