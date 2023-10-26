@@ -7,8 +7,9 @@ import './styles/brandMarquee.css'
 
 brandMarquee()
 
+// initialize splide
 var splide = new Splide('.splide', {
-  type: 'slide',
+  type: 'loop',
   autoWidth: true,
   padding: { left: '2.5rem', right: '2.5rem' },
   pagination: false,
@@ -20,3 +21,6 @@ var splide = new Splide('.splide', {
   snap: false,
 })
 splide.mount()
+
+// hide carticon on home site
+$('[data-cart="carticon"]').hide()
