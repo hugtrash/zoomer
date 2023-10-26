@@ -12,6 +12,11 @@ function bookingCart() {
   const hiddenInput = document.getElementById('Faces') // get hidden input of request form to load the faces Names in
   const startRequestButton = document.querySelector('[data-cart="startrequest-wrapper"]') // get wrapper of start request button
 
+  if (!cartItemsWrapper || !faces || !hiddenInput || !startRequestButton) {
+    // Mindestens eines der erforderlichen HTML-Elemente fehlt
+    return
+  }
+
   let facesNameString = '' // define faces Names variable
 
   // Update the cart HTML
@@ -74,6 +79,25 @@ function bookingCart() {
     adjustCartHeight()
   }
 
+  function updateAddToCartIcons() {
+    const addToCartIcons = document.querySelectorAll('[data-cart="list-addtocarticon"]')
+
+    addToCartIcons.forEach((starImage) => {
+      const faceId = starImage.getAttribute('data-face-id')
+      const isFaceInCart = facesInCart.some((face) => face.id === faceId)
+
+      if (isFaceInCart) {
+        // if face is in cart, show filled star
+        starImage.src =
+          'https://uploads-ssl.webflow.com/65099f8772d10e33e4c7d36a/6535dfe23ca73a3760a165cc_icon-bookingcart-active-star-zoomer-agency.svg'
+      } else {
+        // if not, show regular star
+        starImage.src =
+          'https://uploads-ssl.webflow.com/65099f8772d10e33e4c7d36a/6525d25a1b7fd93402398e5e_icon-bookingcart-star-zoomer-agency.svg'
+      }
+    })
+  }
+
   // update the cart count on top right
   function updateCartCount() {
     const cartCountElement = document.querySelector('[data-cart="cartcount"]')
@@ -107,6 +131,7 @@ function bookingCart() {
           updateBookingCartHTML()
           updateFormInput()
           updateCartCount()
+          updateAddToCartIcons()
         }
       })
     })
@@ -137,6 +162,7 @@ function bookingCart() {
       updateFormInput()
       updateCartCount()
       adjustCartHeight()
+      updateAddToCartIcons()
     }
   }
   // add listener to all delete buttons
@@ -187,6 +213,7 @@ function bookingCart() {
   updateFormInput()
   updateCartCount()
   adjustCartHeight()
+  updateAddToCartIcons()
 }
 
 export default bookingCart
