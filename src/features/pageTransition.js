@@ -8,16 +8,16 @@ function pageTransition() {
 
   // On Page Load
   if (transitionTrigger.length > 0 && !excludePage) {
-    console.log(excludePage)
-    console.log('is NOT excluded page')
+    // console.log(excludePage)
+    // console.log('is NOT excluded page')
     transitionTrigger.click()
     $('body').addClass('no-scroll-transition')
     setTimeout(() => {
       $('body').removeClass('no-scroll-transition')
     }, introDurationMS)
   } else if (excludePage) {
-    console.log('is excluded page')
-    //transitionContainer.style.display = 'none'
+    // console.log('is excluded page')
+    // transitionContainer.style.display = 'none'
   }
   // On Link Click
   $('a').on('click', function (e) {
