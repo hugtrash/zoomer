@@ -8,33 +8,27 @@
   height: 100%
 }
 
-.video-js .vjs-big-play-button {
-  font-size: 5rem;
+.video-js .custom-big-play-button {
+  display: block;
+  margin: 0;
+  font-size: 1rem;
   color: var(--red);
-  width: 6rem;
-  height: 6rem;
-  /* border: 3px solid var(--red); */
-  border: none;
-  border-radius: 10rem;
-  background: none;
-  margin-left: -3rem;
-  margin-top: -3rem;
+  width: 100%;
+  height: 100%;
   transition: all 0.5s ease;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  color: var(--red);
 }
 
-.video-js .vjs-icon-placeholder {
-  line-height: 6rem;
+.video-js .custom-big-play-button .line-container {
+  width: 50%;
+  left: 25%;
+  margin-top: -10%;
 }
 
-.video-js .vjs-big-play-button:focus,
-.video-js:hover .vjs-big-play-button {
-  color: var(--white);
-  border-color: var(--white);
-  transition: all 0.5s ease;
-  background: none;
-}
-
-.video-js:hover .vjs-big-play-button {
+.video-js:hover .custom-big-play-button {
   transform: scale(1.1);
 }
 
