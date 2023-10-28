@@ -16,10 +16,12 @@ function isElementInViewport(element) {
 
 function textReveal() {
   // Split text into spans
-  new SplitType('[text-split]', {
-    types: 'words, lines, chars',
-    tagName: 'span',
-  })
+  if ($('[text-split]').length > 0) {
+    new SplitType('[text-split]', {
+      types: 'words, lines, chars',
+      tagName: 'span',
+    })
+  }
 
   // Link timelines to scroll position
   function createScrollTrigger(triggerElement, timeline) {
@@ -40,103 +42,99 @@ function textReveal() {
     })
   }
 
-  $('[title-reveal]').each(function () {
-    const element = $(this)
-    let animationDelay = 1 // delay if already in viewport
+  if ($('[title-reveal]').length > 0) {
+    $('[title-reveal]').each(function () {
+      const element = $(this)
+      let animationDelay = 1 // delay if already in viewport
 
-    const inViewport = isElementInViewport(this)
+      const inViewport = isElementInViewport(this)
 
-    const createAnimationWithDelay = (delay) => {
-      const tl = gsap.timeline({ paused: true })
-      tl.from($(this).find('.char'), {
-        yPercent: 115,
-        duration: 0.2,
-        ease: 'power1.out',
-        stagger: { amount: 0.6 },
-        delay: delay,
-      })
-      createScrollTrigger(element, tl)
-    }
+      const createAnimationWithDelay = (delay) => {
+        const tl = gsap.timeline({ paused: true })
+        tl.from($(this).find('.char'), {
+          yPercent: 115,
+          duration: 0.2,
+          ease: 'power1.out',
+          stagger: { amount: 0.6 },
+          delay: delay,
+        })
+        createScrollTrigger(element, tl)
+      }
 
-    if (inViewport) {
-      // Element ist im Viewport, mit Verzögerung abspielen
-      createAnimationWithDelay(animationDelay)
-    } else {
-      // Element ist nicht im Viewport, ohne Verzögerung abspielen
-      createAnimationWithDelay(0)
-    }
-  })
+      if (inViewport) {
+        // Element ist im Viewport, mit Verzögerung abspielen
+        createAnimationWithDelay(animationDelay)
+      } else {
+        // Element ist nicht im Viewport, ohne Verzögerung abspielen
+        createAnimationWithDelay(0)
+      }
+    })
+  }
 
-  // $('[paragraph-reveal]').each(function (index) {
-  //   let tl = gsap.timeline({ paused: true })
-  //   tl.from($(this).find('.word'), {
-  //     yPercent: 110,
-  //     duration: 0.2,
-  //     ease: 'power1.out',
-  //     stagger: { amount: 0.6 },
-  //     delay: index * 0.75,
-  //   })
-  //   createScrollTrigger($(this), tl)
-  // })
+  if ($('[paragraph-reveal]').length > 0) {
+    $('[paragraph-reveal]').each(function (index) {
+      const element = $(this)
+      let animationDelay = (index + 2) * 0.75 // delay if already in viewport
 
-  $('[paragraph-reveal]').each(function (index) {
-    const element = $(this)
-    let animationDelay = (index + 2) * 0.75 // delay if already in viewport
+      // Überprüfen, ob das Element im Viewport ist
+      const inViewport = isElementInViewport(this)
 
-    // Überprüfen, ob das Element im Viewport ist
-    const inViewport = isElementInViewport(this)
+      // Erstelle die Animation mit oder ohne Verzögerung basierend auf der Viewport-Prüfung
+      const createAnimationWithDelay = (delay) => {
+        const tl = gsap.timeline({ paused: true })
+        tl.from(element.find('.word'), {
+          yPercent: 110,
+          duration: 0.2,
+          ease: 'power1.out',
+          stagger: { amount: 0.6 },
+          delay: delay,
+        })
+        createScrollTrigger(element, tl)
+      }
 
-    // Erstelle die Animation mit oder ohne Verzögerung basierend auf der Viewport-Prüfung
-    const createAnimationWithDelay = (delay) => {
-      const tl = gsap.timeline({ paused: true })
-      tl.from(element.find('.word'), {
-        yPercent: 110,
-        duration: 0.2,
-        ease: 'power1.out',
-        stagger: { amount: 0.6 },
-        delay: delay,
-      })
-      createScrollTrigger(element, tl)
-    }
+      if (inViewport) {
+        // Element ist im Viewport, mit Verzögerung abspielen
+        createAnimationWithDelay(animationDelay)
+      } else {
+        // Element ist nicht im Viewport, ohne Verzögerung abspielen
+        createAnimationWithDelay(0)
+      }
+    })
+  }
 
-    if (inViewport) {
-      // Element ist im Viewport, mit Verzögerung abspielen
-      createAnimationWithDelay(animationDelay)
-    } else {
-      // Element ist nicht im Viewport, ohne Verzögerung abspielen
-      createAnimationWithDelay(0)
-    }
-  })
+  if ($('[label-reveal]').length > 0) {
+    $('[label-reveal]').each(function (index) {
+      const element = $(this)
+      let animationDelay = (index + 2) * 0.15 // delay if already in viewport
 
-  $('[label-reveal]').each(function (index) {
-    const element = $(this)
-    let animationDelay = (index + 2) * 0.15 // delay if already in viewport
+      // Überprüfen, ob das Element im Viewport ist
+      const inViewport = isElementInViewport(this)
+      const createAnimationWithDelay = (delay) => {
+        const tl = gsap.timeline({ paused: true })
+        tl.from($(this).find('.char'), {
+          yPercent: 110,
+          duration: 0.2,
+          ease: 'power1.out',
+          stagger: { amount: 0.1 },
+          delay: delay,
+        })
+        createScrollTrigger(element, tl)
+      }
 
-    // Überprüfen, ob das Element im Viewport ist
-    const inViewport = isElementInViewport(this)
-    const createAnimationWithDelay = (delay) => {
-      const tl = gsap.timeline({ paused: true })
-      tl.from($(this).find('.char'), {
-        yPercent: 110,
-        duration: 0.2,
-        ease: 'power1.out',
-        stagger: { amount: 0.1 },
-        delay: delay,
-      })
-      createScrollTrigger(element, tl)
-    }
-
-    if (inViewport) {
-      // Element ist im Viewport, mit Verzögerung abspielen
-      createAnimationWithDelay(animationDelay)
-    } else {
-      // Element ist nicht im Viewport, ohne Verzögerung abspielen
-      createAnimationWithDelay(0)
-    }
-  })
+      if (inViewport) {
+        // Element ist im Viewport, mit Verzögerung abspielen
+        createAnimationWithDelay(animationDelay)
+      } else {
+        // Element ist nicht im Viewport, ohne Verzögerung abspielen
+        createAnimationWithDelay(0)
+      }
+    })
+  }
 
   // Avoid flash of unstyled content
-  gsap.set('[text-split]', { opacity: 1 })
+  if ($('[text-split]').length > 0) {
+    gsap.set('[text-split]', { opacity: 1 })
+  }
 }
 
 export default textReveal
