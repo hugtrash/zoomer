@@ -12,6 +12,9 @@
     "browser": true,
     "jquery": true
   },
+  "globals": {
+    "Webflow": true
+  },
   "extends": [
     "eslint:recommended",
     "plugin:prettier/recommended"
@@ -42,6 +45,12 @@
           "order": "asc",
           "caseInsensitive": true
         }
+      }
+    ],
+    "no-undef": [
+      "error",
+      {
+        "typeof": true
       }
     ]
   }
