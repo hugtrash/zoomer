@@ -1,0 +1,45 @@
+.video-js {
+  width: 100%;
+  height: 100%;
+}
+
+.video-wrapper .w-embed {
+  width: 100%;
+  height: 100%
+}
+
+.video-js .vjs-big-play-button {
+  font-size: 5rem;
+  color: var(--red);
+  width: 6rem;
+  height: 6rem;
+  /* border: 3px solid var(--red); */
+  border: none;
+  border-radius: 10rem;
+  background: none;
+  margin-left: -3rem;
+  margin-top: -3rem;
+  transition: all 0.5s ease;
+}
+
+.video-js .vjs-icon-placeholder {
+  line-height: 6rem;
+}
+
+.video-js .vjs-big-play-button:focus,
+.video-js:hover .vjs-big-play-button {
+  color: var(--white);
+  border-color: var(--white);
+  transition: all 0.5s ease;
+  background: none;
+}
+
+.video-js:hover .vjs-big-play-button {
+  transform: scale(1.1);
+}
+
+.video-js .vjs-control-bar {
+  color: var(--red);
+  background: none;
+  flex-direction: row-reverse;
+}
