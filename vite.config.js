@@ -1,11 +1,16 @@
 import { defineConfig } from 'vite'
 import eslintPlugin from 'vite-plugin-eslint'
-
+import { copy } from 'copy-vite-plugin'
 
 // vite.config.js
 export default defineConfig({
   plugins: [
     eslintPlugin({ cache: false }),
+    copy({
+      pattern: [
+        { from: 'src/_headers', to: '_headers' }
+      ]
+    })
   ],
   server: {
     host: 'localhost',
