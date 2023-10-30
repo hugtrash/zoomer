@@ -2,12 +2,6 @@ input[type="datetime-local"]:focus {
   outline: none;
 }
 
-/* lightbox styles */
-.w-lightbox-thumbnail,
-.w-lightbox-image {
-  border-radius: .25rem;
-}
-
 .w-lightbox-backdrop {
   background: rgba(255, 255, 255, .8);
   backdrop-filter: blur(20px);

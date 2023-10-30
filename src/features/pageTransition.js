@@ -8,8 +8,6 @@ function pageTransition() {
 
   // On Page Load
   if (transitionTrigger.length > 0 && !excludePage) {
-    // console.log(excludePage)
-    // console.log('is NOT excluded page')
     transitionTrigger.click()
     $('body').addClass('no-scroll-transition')
     setTimeout(() => {
