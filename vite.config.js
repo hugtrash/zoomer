@@ -28,7 +28,7 @@ export default defineConfig({
         // work: './src/work.js',
         workdetail: './src/work-detail.js',
         faces: './src/faces.js',
-        // facesdetail: './src/faces-detail.js',
+        facesdetail: './src/faces-detail.js',
       },
       output: {
         format: 'es',

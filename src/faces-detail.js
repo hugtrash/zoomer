@@ -1,3 +1,7 @@
-import bookingCart from './features/bookingCart'
+import insertScript from './features/insertScript'
+import videoPlayer from './features/videoPlayer'
+import './styles/videoPlayer.css'
 
-bookingCart()
+insertScript('https://cdn.jsdelivr.net/npm/@finsweet/attributes-cmsstatic@1/cmsstatic.js', 'body', 'async')
+
+videoPlayer()
