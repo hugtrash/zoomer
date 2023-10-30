@@ -13,6 +13,10 @@
   display: none;
 }
 
+.button-drawline .line-container.circle {
+  margin-top: -25%;
+}
+
 .button-drawline:hover .line-container,
 .button-drawline.active .line-container {
   opacity: 1;

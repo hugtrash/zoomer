@@ -1,0 +1,68 @@
+.video-js {
+  width: 100%;
+  height: 100%;
+}
+
+.video-wrapper .w-embed {
+  width: 100%;
+  height: 100%
+}
+
+.video-js .custom-big-play-button {
+  display: block;
+  margin: 0;
+  width: 8rem;
+  height: 8rem;
+  margin-left: -4rem;
+  margin-top: -4rem;
+  font-size: 1rem;
+  color: var(--red);
+  transition: all 0.5s ease;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: transparent;
+  cursor: none;
+  background: url('https://uploads-ssl.webflow.com/65099f8772d10e33e4c7d36a/653e8270827717b4f64378dd_icon-play-video-zoomer-social-media-agentur.svg') no-repeat 53% 50%;
+  background-size: 2rem;
+}
+
+.video-js .custom-big-play-button span {
+  color: var(--red);
+}
+
+.video-js:hover .line-container {
+  display: block;
+  opacity: 1;
+}
+
+.video-js .custom-big-play-button .line-container {
+  width: 50%;
+  left: 25%;
+}
+
+.video-js:hover .custom-big-play-button {
+  transform: scale(1.3);
+}
+
+.vjs-controls-disabled .custom-big-play-button,
+.vjs-has-started .custom-big-play-button,
+.vjs-using-native-controls .custom-big-play-button,
+.vjs-error .custom-big-play-button {
+  display: none;
+}
+
+/* .vjs-has-started.vjs-paused .custom-big-play-button {
+  display: block;
+} */
+
+.video-js .vjs-control-bar {
+  color: var(--red);
+  background: none;
+  flex-direction: row-reverse;
+  font-size: .8rem;
+}
+
+.vjs-fullscreen {
+  cursor: default;
+}
