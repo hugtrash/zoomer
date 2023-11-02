@@ -22,9 +22,8 @@ export default defineConfig({
   },
   build: {
     minify: true,
-    //minifyIdentifiers: false,
-    //keepNames: true,
     manifest: true,
+    cssCodeSplit: true,
     rollupOptions: {
       input: {
         global: './src/global.js',

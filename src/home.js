@@ -1,4 +1,4 @@
-import Splide from '@splidejs/splide' // eslint-disable-line no-unused-vars
+import Splide from '@splidejs/splide'
 
 import '@splidejs/splide/css/core'
 import './styles/splide.css'
