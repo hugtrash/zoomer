@@ -2,10 +2,6 @@ import Splide from '@splidejs/splide'
 
 import '@splidejs/splide/css/core'
 import './styles/splide.css'
-import brandMarquee from './features/brandMarquee'
-import './styles/brandMarquee.css'
-
-brandMarquee()
 
 // initialize splide
 var splide = new Splide('.splide', {

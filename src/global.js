@@ -2,6 +2,8 @@ import backgroundColorFade from './features/backgroundColorFade'
 import './styles/backgroundColorFade.css'
 import './styles/customCursor.css'
 import bookingCart from './features/bookingCart'
+import brandMarquee from './features/brandMarquee'
+import './styles/brandMarquee.css'
 import buttonsDrawline from './features/buttonsDrawline'
 import './styles/buttonsDrawline.css'
 import customCursor from './features/customCursor'
@@ -23,3 +25,4 @@ bookingCart()
 pageTransition()
 textReveal()
 validateForm()
+brandMarquee()
