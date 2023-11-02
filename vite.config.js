@@ -21,7 +21,7 @@ export default defineConfig({
     },
   },
   build: {
-    minify: false,
+    minify: true,
     //minifyIdentifiers: false,
     //keepNames: true,
     manifest: true,
