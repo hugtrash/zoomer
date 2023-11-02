@@ -29,7 +29,7 @@ export default defineConfig({
       input: {
         global: './src/global.js',
         home: './src/home.js',
-        // studio: './src/studio.js',
+        studio: './src/studio.js',
         // work: './src/work.js',
         workdetail: './src/workdetail.js',
         faces: './src/faces.js',
