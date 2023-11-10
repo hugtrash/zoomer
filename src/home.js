@@ -15,6 +15,11 @@ var splide = new Splide('.splide', {
   interval: 4000,
   paginationKeyboard: true,
   snap: false,
+  breakpoints: {
+    767: {
+      padding: { left: '1.25rem', right: '1.25rem' },
+    },
+  },
 })
 splide.mount()
 
