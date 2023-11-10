@@ -10,6 +10,7 @@ import customCursor from './features/customCursor'
 import './styles/customCursor.css'
 import validateForm from './features/formValidation'
 import insertScript from './features/insertScript'
+import mobileMenu from './features/mobileMenu'
 import pageTransition from './features/pageTransition'
 import './styles/pageTransition.css'
 import textReveal from './features/textReveal'
@@ -26,3 +27,4 @@ pageTransition()
 textReveal()
 validateForm()
 brandMarquee()
+mobileMenu()
