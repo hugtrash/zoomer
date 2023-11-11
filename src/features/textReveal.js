@@ -34,10 +34,10 @@ function textReveal() {
         timeline.pause()
       },
     })
-    // Play tl when scrolled into view (60% from top of screen)
+    // Play tl when scrolled into view (80% from top of screen)
     ScrollTrigger.create({
       trigger: triggerElement,
-      start: 'top 60%',
+      start: 'top 80%',
       onEnter: () => timeline.play(),
     })
   }
