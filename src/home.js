@@ -3,8 +3,8 @@ import Splide from '@splidejs/splide'
 import '@splidejs/splide/css/core'
 import './styles/splide.css'
 
-import videoPlayer from './features/videoPlayer'
-import './styles/videoPlayer.css'
+// import videoPlayer from './features/videoPlayer'
+// import './styles/videoPlayer.css'
 
 // initialize splide
 var splide = new Splide('.splide', {
@@ -30,7 +30,7 @@ splide.mount()
 $('[data-cart="carticon"]').hide()
 
 // initialize video player for showreel
-videoPlayer()
+// videoPlayer()
 
 // make sure body doesnt overflow when video modal is up
 $('[button-type="showreel"]').click(function () {
@@ -39,7 +39,6 @@ $('[button-type="showreel"]').click(function () {
 $('[button-type="hidereel"]').click(function () {
   $('body').removeClass('overflow-hidden')
 })
-
 
 // var showreelPlayer = videojs.getPlayer('video-1') // eslint-disable-line
 
