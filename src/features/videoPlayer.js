@@ -46,7 +46,7 @@ function videoPlayer() {
       videoElement.preload = 'auto'
       videoElement.width = '100%'
       videoElement.height = '100%'
-      videoElement.id = 'project-video-' + (index + 1)
+      videoElement.id = 'video-' + (index + 1)
 
       var source = document.createElement('source')
       source.src = videoFileValue
@@ -63,7 +63,7 @@ function videoPlayer() {
 
       videoWrapper.appendChild(videoElement)
 
-      var player = videojs('project-video-' + (index + 1), {
+      var player = videojs('video-' + (index + 1), {
         fluid: true,
         controlBar: {
           children: {

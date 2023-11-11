@@ -3,6 +3,9 @@ import Splide from '@splidejs/splide'
 import '@splidejs/splide/css/core'
 import './styles/splide.css'
 
+import videoPlayer from './features/videoPlayer'
+import './styles/videoPlayer.css'
+
 // initialize splide
 var splide = new Splide('.splide', {
   type: 'loop',
@@ -25,3 +28,32 @@ splide.mount()
 
 // hide carticon on home site
 $('[data-cart="carticon"]').hide()
+
+// initialize video player for showreel
+videoPlayer()
+
+// make sure body doesnt overflow when video modal is up
+$('[button-type="showreel"]').click(function () {
+  $('body').addClass('overflow-hidden')
+})
+$('[button-type="hidereel"]').click(function () {
+  $('body').removeClass('overflow-hidden')
+})
+
+
+// var showreelPlayer = videojs.getPlayer('video-1') // eslint-disable-line
+
+// console.log('video is' + showreelPlayer)
+
+// // Funktion, um das Video zu stoppen und zurückzuspulen
+// function stopAndRewind() {
+//   showreelPlayer.ready(function () {
+//     showreelPlayer.pause()
+//     showreelPlayer.currentTime(0)
+//   })
+// }
+
+// // if showreel modal closed, stop and rewind showreel video
+// $('[button-type="hidereel"]').click(function () {
+//   stopAndRewind()
+// })
