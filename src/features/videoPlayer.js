@@ -4,11 +4,10 @@ import 'video.js/dist/video-js.min.css'
 import buttonsDrawline from './buttonsDrawline'
 
 function videoPlayer() {
+  const players = []
   class CustomPlayButton extends videojs.getComponent('Button') {
     constructor(player, options) {
       super(player, options)
-
-      //this.controlText('Play Video')
       this.on('click', this.handleClick)
     }
 
@@ -81,8 +80,12 @@ function videoPlayer() {
         player.el().appendChild(customPlayButton.el()) // Füge das benutzerdefinierte Steuerelement außerhalb der Steuerleiste hinzu
         buttonsDrawline()
       })
+
+      players.push(player)
     }
   })
+
+  return players
 }
 
 export default videoPlayer

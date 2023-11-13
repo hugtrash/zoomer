@@ -58,7 +58,7 @@
 
 .video-js .vjs-control-bar {
   color: var(--red);
-  background: none;
+  background: none !important;
   flex-direction: row-reverse;
   font-size: .8rem;
 }
