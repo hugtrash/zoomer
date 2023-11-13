@@ -2,6 +2,8 @@ import Splide from '@splidejs/splide'
 
 import '@splidejs/splide/css/core'
 import './styles/splide.css'
+
+import videoPlayer from './features/videoPlayer'
 import './styles/videoPlayer.css'
 
 // initialize splide
@@ -27,35 +29,26 @@ splide.mount()
 // hide carticon on home site
 $('[data-cart="carticon"]').hide()
 
-// load video only on first click and make sure body doesnt overflow when video modal is up
+// initialize video player for showreel
+const players = videoPlayer()
+
+// make sure body doesnt overflow when video modal is up
 $('[button-type="showreel"]').click(function () {
-  loadVideoPlayer()
   $('body').addClass('overflow-hidden')
 })
 $('[button-type="hidereel"]').click(function () {
   $('body').removeClass('overflow-hidden')
 })
 
-let players
-
-function loadVideoPlayer() {
-  // make sure video does not initialize a second time
-  if (!window.videoPlayerInitialized)
-    // load videoplayer dynamically
-    import('./features/videoPlayer').then((videoPlayerModule) => {
-      // if loaded, run function to initialize videoplayer
-      players = videoPlayerModule.default()
-    })
-  window.videoPlayerInitialized = true
-}
-
-// pause showreel if hide button of modal is clicked
+// Funktion, um das Video zu stoppen und zurückzuspulen
 function stopShowreel() {
   players[0].ready(function () {
     players[0].pause()
     //players[0].currentTime(0)
   })
 }
+
+// if showreel modal closed, stop and rewind showreel video
 $('[button-type="hidereel"]').click(function () {
   stopShowreel()
 })
