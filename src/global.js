@@ -19,12 +19,19 @@ import './styles/style.css'
 
 insertScript('https://cdn.jsdelivr.net/npm/@finsweet/attributes-mirrorclick@1/mirrorclick.js', 'body', 'defer')
 
-customCursor()
 backgroundColorFade()
-buttonsDrawline()
 bookingCart()
 pageTransition()
-textReveal()
-validateForm()
 brandMarquee()
 mobileMenu()
+
+// run only if not in edit mode
+document.addEventListener('DOMContentLoaded', function () {
+  var editorElement = document.querySelector('.w-editor')
+  if (!editorElement) {
+    buttonsDrawline()
+    customCursor()
+    textReveal()
+    validateForm()
+  }
+})
