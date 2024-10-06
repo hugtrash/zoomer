@@ -33,6 +33,8 @@ function videoPlayer() {
   videoContainers.forEach(function (videoWrapper, index) {
     const videoFileValue = videoWrapper.getAttribute('data-video-file')
     const aspectRatio = videoWrapper.getAttribute('data-video-ratio')
+    const playsInline = videoWrapper.getAttribute('data-video-playsinline')
+
     let videoPosterValue
     if (videoWrapper.querySelector('img')) {
       videoPosterValue = videoWrapper.querySelector('.video-wrapper_poster-placeholder').getAttribute('src')
@@ -72,6 +74,7 @@ function videoPlayer() {
         },
         aspectRatio: aspectRatio,
         poster: videoPosterValue,
+        playsinline: playsInline,
       })
 
       player.ready(function () {
